@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CertSim - Certificados Digitais</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #232323;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: #ed7021;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #fff;
+        }
+
+        nav {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .banner {
+            background-color: #ed7021;
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 20px;
+        }
+
+        .banner h2 {
+            color: #fff;
+            margin: 0;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .tab {
+            background-color: #232323;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border: 2px solid #ed7021;
+            border-radius: 5px;
+        }
+
+        .tab.active {
+            background-color: #ed7021;
+        }
+
+        .content {
+            margin-top: 20px;
+        }
+
+        .content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+
+        .content table th, .content table td {
+            padding: 10px;
+            border: 1px solid #ed7021;
+            text-align: center;
+        }
+
+        .content table th {
+            background-color: #ed7021;
+        }
+
+        .btn-detalhes {
+            background-color: #ed7021;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .details {
+            display: none;
+            background-color: #333;
+            padding: 20px;
+            color: #fff;
+            border: 1px solid #ed7021;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #333;
+        }
+
+        footer p {
+            margin: 0;
+            color: #fff;
+        }
+
+        /* Escondendo todas as abas de conteúdo exceto a ativa */
+        .certificate-content {
+            display: none;
+        }
+
+        .certificate-content.active {
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>CertSim - Certificados Digitais</h1>
+        <nav>
+            <a href="#">Certificados</a>
+            <a href="#">Comparativo de Preços</a>
+            <a href="#">Contato</a>
+        </nav>
+    </header>
+
+    <div class="banner">
+        <h2>Certificados Digitais com até 15% de Desconto para Parceiros</h2>
+    </div>
+
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" data-target="e-cnpj">e-CNPJ</div>
+            <div class="tab" data-target="e-cpf">e-CPF</div>
+        </div>
+
+        <div class="content">
+            <!-- e-CNPJ -->
+            <div id="e-cnpj" class="certificate-content active">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Modelo</th>
+                            <th>Validade</th>
+                            <th>Valor Cheio</th>
+                            <th>Valor com 15% Desconto</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A1</td>
+                            <td>1 ano</td>
+                            <td>R$ 232,00</td>
+                            <td>R$ 197,20</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A1')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A1">
+                            <td colspan="5">Certificado A1: Armazenado no computador, pode ser instalado em várias máquinas.</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Cartão</td>
+                            <td>1 ano</td>
+                            <td>R$ 289,00</td>
+                            <td>R$ 245,65</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-cartao-1')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-cartao-1">
+                            <td colspan="5">Certificado A3 Cartão: Armazenado em mídia smartcard, requer leitora.</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Cartão</td>
+                            <td>2 anos</td>
+                            <td>R$ 320,00</td>
+                            <td>R$ 272,00</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-cartao-2')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-cartao-2">
+                            <td colspan="5">Certificado A3 Cartão com validade de 2 anos: Armazenado em mídia smartcard, requer leitora.</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Cartão</td>
+                            <td>3 anos</td>
+                            <td>R$ 389,00</td>
+                            <td>R$ 330,65</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-cartao-3')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-cartao-3">
+                            <td colspan="5">Certificado A3 Cartão com validade de 3 anos: Armazenado em mídia smartcard, requer leitora.</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Token</td>
+                            <td>1 ano</td>
+                            <td>R$ 435,00</td>
+                            <td>R$ 369,75</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-token-1')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-token-1">
+                            <td colspan="5">Certificado A3 Token: Armazenado em mídia token (pendrive).</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Token</td>
+                            <td>2 anos</td>
+                            <td>R$ 480,00</td>
+                            <td>R$ 408,00</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-token-2')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-token-2">
+                            <td colspan="5">Certificado A3 Token com validade de 2 anos: Armazenado em mídia token (pendrive).</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Token</td>
+                            <td>3 anos</td>
+                            <td>R$ 539,00</td>
+                            <td>R$ 458,15</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-token-3')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-token-3">
+                            <td colspan="5">Certificado A3 Token com validade de 3 anos: Armazenado em mídia token (pendrive).</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Sem Mídia</td>
+                            <td>1 ano</td>
+                            <td>R$ 252,00</td>
+                            <td>R$ 214,20</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-sem-midia-1')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-sem-midia-1">
+                            <td colspan="5">Certificado A3 Sem Mídia: Necessita cartão ou token para ser utilizado.</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Sem Mídia</td>
+                            <td>2 anos</td>
+                            <td>R$ 280,00</td>
+                            <td>R$ 238,00</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-sem-midia-2')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-sem-midia-2">
+                            <td colspan="5">Certificado A3 Sem Mídia com validade de 2 anos: Necessita cartão ou token para ser utilizado.</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Sem Mídia</td>
+                            <td>3 anos</td>
+                            <td>R$ 339,00</td>
+                            <td>R$ 288,15</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-sem-midia-3')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-sem-midia-3">
+                            <td colspan="5">Certificado A3 Sem Mídia com validade de 3 anos: Necessita cartão ou token para ser utilizado.</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Cartão + Leitora</td>
+                            <td>1 ano</td>
+                            <td>R$ 435,00</td>
+                            <td>R$ 369,75</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-cartao-leitora-1')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-cartao-leitora-1">
+                            <td colspan="5">Certificado A3 Cartão com Leitora: Armazenado em smartcard, inclui leitora.</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Cartão + Leitora</td>
+                            <td>2 anos</td>
+                            <td>R$ 480,00</td>
+                            <td>R$ 408,00</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-cartao-leitora-2')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-cartao-leitora-2">
+                            <td colspan="5">Certificado A3 Cartão com Leitora e validade de 2 anos: Armazenado em smartcard, inclui leitora.</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Cartão + Leitora</td>
+                            <td>3 anos</td>
+                            <td>R$ 539,00</td>
+                            <td>R$ 458,15</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-cartao-leitora-3')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-cartao-leitora-3">
+                            <td colspan="5">Certificado A3 Cartão com Leitora e validade de 3 anos: Armazenado em smartcard, inclui leitora.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- e-CPF -->
+            <div id="e-cpf" class="certificate-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Modelo</th>
+                            <th>Validade</th>
+                            <th>Valor Cheio</th>
+                            <th>Valor com 15% Desconto</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>A1</td>
+                            <td>1 ano</td>
+                            <td>R$ 155,00</td>
+                            <td>R$ 131,75</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A1-cpf')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A1-cpf">
+                            <td colspan="5">Certificado A1 para e-CPF: Armazenado no computador, pode ser instalado em várias máquinas.</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Cartão</td>
+                            <td>1 ano</td>
+                            <td>R$ 221,00</td>
+                            <td>R$ 187,85</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-cartao-cpf-1')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-cartao-cpf-1">
+                            <td colspan="5">Certificado A3 Cartão para e-CPF: Armazenado em mídia smartcard, requer leitora.</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Cartão</td>
+                            <td>3 anos</td>
+                            <td>R$ 289,00</td>
+                            <td>R$ 245,65</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-cartao-cpf-3')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-cartao-cpf-3">
+                            <td colspan="5">Certificado A3 Cartão com validade de 3 anos para e-CPF: Armazenado em mídia smartcard, requer leitora.</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Token</td>
+                            <td>1 ano</td>
+                            <td>R$ 355,00</td>
+                            <td>R$ 301,75</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-token-cpf-1')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-token-cpf-1">
+                            <td colspan="5">Certificado A3 Token para e-CPF: Armazenado em mídia token (pendrive).</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Token</td>
+                            <td>3 anos</td>
+                            <td>R$ 439,00</td>
+                            <td>R$ 373,15</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-token-cpf-3')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-token-cpf-3">
+                            <td colspan="5">Certificado A3 Token com validade de 3 anos para e-CPF: Armazenado em mídia token (pendrive).</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Sem Mídia</td>
+                            <td>1 ano</td>
+                            <td>R$ 155,00</td>
+                            <td>R$ 131,75</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-sem-midia-cpf-1')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-sem-midia-cpf-1">
+                            <td colspan="5">Certificado A3 Sem Mídia: Necessita cartão ou token para ser utilizado.</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Sem Mídia</td>
+                            <td>3 anos</td>
+                            <td>R$ 252,00</td>
+                            <td>R$ 214,20</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-sem-midia-cpf-3')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-sem-midia-cpf-3">
+                            <td colspan="5">Certificado A3 Sem Mídia com validade de 3 anos: Necessita cartão ou token para ser utilizado.</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Cartão + Leitora</td>
+                            <td>1 ano</td>
+                            <td>R$ 355,00</td>
+                            <td>R$ 301,75</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-cartao-leitora-cpf-1')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-cartao-leitora-cpf-1">
+                            <td colspan="5">Certificado A3 Cartão com Leitora: Armazenado em smartcard, inclui leitora.</td>
+                        </tr>
+                        <tr>
+                            <td>A3 - Cartão + Leitora</td>
+                            <td>3 anos</td>
+                            <td>R$ 439,00</td>
+                            <td>R$ 373,15</td>
+                            <td><button class="btn-detalhes" onclick="toggleDetails(this, 'A3-cartao-leitora-cpf-3')">Ver Detalhes</button></td>
+                        </tr>
+                        <tr class="details" id="details-A3-cartao-leitora-cpf-3">
+                            <td colspan="5">Certificado A3 Cartão com Leitora e validade de 3 anos: Armazenado em smartcard, inclui leitora.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2024 CertSim - Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        const tabs = document.querySelectorAll('.tab');
+        const contents = document.querySelectorAll('.certificate-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                document.getElementById(tab.getAttribute('data-target')).classList.add('active');
+            });
+        });
+
+        function toggleDetails(button, id) {
+            const detailsRow = document.getElementById('details-' + id);
+            
+            // Verifica se o elemento está visível ou não
+            if (detailsRow.style.display === 'table-row') {
+                detailsRow.style.display = 'none'; // Retrair
+                button.textContent = 'Ver Detalhes'; // Muda o texto do botão
+            } else {
+                detailsRow.style.display = 'table-row'; // Expandir
+                button.textContent = 'Ocultar Detalhes'; // Muda o texto do botão
+            }
+        }
+    </script>
+</body>
+
+</html>
